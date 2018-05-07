@@ -1,0 +1,74 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "proto/translator.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v1/translate": {
+      "post": {
+        "operationId": "Translate",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/protoTranslateResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/protoTranslateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Translator"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protoLanguage": {
+      "type": "string",
+      "enum": [
+        "en",
+        "fr"
+      ],
+      "default": "en"
+    },
+    "protoTranslateRequest": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "language": {
+          "$ref": "#/definitions/protoLanguage"
+        }
+      }
+    },
+    "protoTranslateResponse": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+protoc_includes:
+  - ../../src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis
+
+gen:
+  go_options:
+    import_path: translator-service/
+
+  plugins:
+    - name: go
+      type: go
+      flags: plugins=grpc
+      output: .
+    - name: grpc-gateway
+      type: go
+      output: .
+    - name: swagger
+      type: go
+      output: swagger/.
